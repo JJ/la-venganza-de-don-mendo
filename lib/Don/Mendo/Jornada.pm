@@ -21,7 +21,7 @@ sub new {
     my @parts = split(/\n\n/, $text );
     my $this_part = shift @parts;
     my $intro;
-    while ( $this_part !~ / {5}[A-ZÑ]+\.–/ && @parts ) {
+    while ( $this_part !~ / {5}[A-ZÑÍÁ y,]+\.–/ && @parts ) {
 	$intro .= $this_part;
 	$this_part = shift @parts;
     }
@@ -31,10 +31,26 @@ sub new {
 		 _intro => $intro,
 		 _linestext => $lines };
 
-    my @bits = ( $lines =~ / {5}([A-ZÑ]+)\.– (.+?)\n\n\n/gs );
+    my @bits = ( $lines =~ / {5}([A-ZÑÍÁ y,]+)\.– (.+?)\n\n\n/gs );
+
+    my $last_line;
     while (@bits ) {
-	my $line = new Don::Mendo::Linea( shift @bits, shift @bits );
+	my $actor = shift @bits;
+	my $this_line = shift @bits;
+	if ( $this_line =~ /\.– / ){ #Missed split lines
+	    my ($new_linea, $new_actor, $otra_linea) = 
+		($this_line =~ /(.+?) {5}([A-ZÑÍÁ y,]+)\.– (.+)/gs);
+	    unshift @bits, ($new_actor, $otra_linea);
+	    $this_line = $new_linea;
+	}
+	my $line = new Don::Mendo::Linea( $actor, $this_line );
 	push @{$self->{'_lines'}}, $line;
+	if ( $last_line ) {
+	    $last_line->follows( $line );
+	} else {
+	    $self->{'_first_line'} = $line;
+	}
+	$last_line = $line;
     }
     bless $self, $class;    
 	
@@ -50,7 +66,25 @@ sub lines {
     return $self->{'_lines'};
 }
 
+sub lines_for_character {
+    my $self = shift;
+    my $character = uc( shift ) || "MENDO";
+    my @these_lines;
+    for my $l (@{$self->{'_lines'}}) {
+	push(@these_lines, $l) if ($l->character() eq $character);
+    }
+    return \@these_lines;
+}
 
+sub tell {
+    my $self = shift;
+    my $line = $self->{'_first_line'};
+    my $text;
+    do {
+	$text .= "\t".$line->character()." - ".$line->say()."\n\n";
+    }while ($line = $line->{'_follows'});
+    return $text;
+}
 
 1; # Magic true value required at end of module
 

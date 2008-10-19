@@ -37,6 +37,11 @@ sub character {
     return $self->{'_personaje'};
 }
 
+sub follows {
+    my $self = shift;
+    $self->{'_follows'} = shift;
+}
+
 1; # Magic true value required at end of module
 
 

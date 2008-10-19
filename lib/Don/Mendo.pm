@@ -47,104 +47,63 @@ sub jornadas {
 
 =head1 NAME
 
-Don::Mendo - [One line description of module's purpose here]
+Don::Mendo - Modules for "La venganza de Don Mendo", Sir Mendo's revenge.
 
 =head1 VERSION
 
-This document describes Don::Mendo version 0.0.1. The text from the
-    original play was downloaded from the L<www.juntadeandalucia.es/averroes/~04700442a/Mendo.pdf|Averroes Plan>. 
-
+This document describes Don::Mendo version 0.0.3. 
 
 =head1 SYNOPSIS
 
     use Don::Mendo;
-
+    my $don_mendo = new Don::Mendo;
+    my $first_act = $don_mendo->jornadas(0); #Acts in the play are
+				#"jornadas"
+    $first_act->tell(); #Print the whole act
+    my $lines_for_mendo = $first_act->lines_for_character('Mendo');
+    #Just the lines for the main character
   
 =head1 DESCRIPTION
 
-=for author to fill in:
-    Write a full description of the module and its features here.
-    Use subsections (=head2, =head3) as appropriate.
-
+A structured module for "La venganza de Don Mendo", by Antonio Muñoz
+    Seca, a play written in 1918 and widely known and represented in
+    Spain. The text was converted from a PDF found in
+    L<www.juntadeandalucia.es/averroes/~04700442a/Mendo.pdf|Averroes
+    Plan>.
+It's old enough to be in the public domain, so I guess there's no
+    problem here. 
+ 
 
 =head1 INTERFACE 
 
-=for author to fill in:
-    Write a separate section listing the public components of the modules
-    interface. These normally consist of either subroutines that may be
-    exported, or methods that may be called on objects belonging to the
-    classes provided by the module.
+=head2 new()
 
-=head1 DIAGNOSTICS
+Parses the text and sets up journeys, characters, lines and
+    everything. 
 
-=for author to fill in:
-    List every single error and warning message that the module can
-    generate (even the ones that will "never happen"), with a full
-    explanation of each problem, one or more likely causes, and any
-    suggested remedies.
+=head2 text()
 
-=over
+Returns the whole text, in the original version
 
-=item C<< Error message here, perhaps with %s placeholders >>
+=head2 jornadas()
 
-[Description of error here]
-
-=item C<< Another error message here >>
-
-[Description of error here]
-
-[Et cetera, et cetera]
-
-=back
-
-
-=head1 CONFIGURATION AND ENVIRONMENT
-
-=for author to fill in:
-    A full explanation of any configuration system(s) used by the
-    module, including the names and locations of any configuration
-    files, and the meaning of any environment variables or properties
-    that can be set. These descriptions must also include details of any
-    configuration language used.
-  
-Don::Mendo requires no configuration files or environment variables.
-
+Returns the array with the 4 journeys that constitute the play
 
 =head1 DEPENDENCIES
 
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
-None.
-
+Just the basic test and Carp modules
 
 =head1 INCOMPATIBILITIES
 
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
-
-None reported.
+This should be compatible with everything, up to and including
+    Shakespeare, dada theater, and improv.
 
 
 =head1 BUGS AND LIMITATIONS
 
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
-
-No bugs have been reported.
+It's not clear from the book if Don Mendo is beautiful or ugly as
+    monkey's ass. You can wait for the next version of Don Mendo to
+    fix this, but I wouldn't hold my breath.
 
 Please report any bugs or feature requests to
 C<bug-don-mendo@rt.cpan.org>, or through the web interface at
