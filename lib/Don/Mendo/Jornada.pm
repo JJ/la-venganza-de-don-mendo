@@ -61,14 +61,10 @@ sub text {
     return $self->{'text'};
 }
 
-sub lines {
-    my $self = shift;
-    return $self->{'_lines'};
-}
-
 sub lines_for_character {
     my $self = shift;
-    my $character = uc( shift ) || "MENDO";
+    my $character = uc( shift );
+    return $self->{'_lines'} if (!$character);
     my @these_lines;
     for my $l (@{$self->{'_lines'}}) {
 	push(@these_lines, $l) if ($l->character() eq $character);
@@ -86,30 +82,40 @@ sub tell {
     return $text;
 }
 
+sub actors{
+    my $self = shift;
+    my %actors;
+    for my $l ( @{$self->{'_lines'}} ) {
+	if ( !$actors{$l->character()} ) {
+	    $actors{$l->character()} = $l;
+	}
+    }
+    return \%actors;
+}
+
 1; # Magic true value required at end of module
 
 
 =head1 NAME
 
-Don::Mendo - [One line description of module's purpose here]
+Don::Mendo::Jornada - Each one of the acts of the Don Mendo play
 
 =head1 VERSION
 
-This document describes Don::Mendo version 0.0.1. The text from the
-    original play was downloaded from the L<www.juntadeandalucia.es/averroes/~04700442a/Mendo.pdf|Averroes Plan>. 
+This document describes Don::Mendo::Jornada version 0.0.3.
 
 
 =head1 SYNOPSIS
 
-    use Don::Mendo;
+    use Don::Mendo::Jornada;
 
   
 =head1 DESCRIPTION
 
-=for author to fill in:
-    Write a full description of the module and its features here.
-    Use subsections (=head2, =head3) as appropriate.
-
+A "jornada" is the equivalent of an act, a part of the play taking
+    place in a single setup. Don Mendo has 4 acts, first one in
+    Magdalena's tower, second one in Don Mendo's prison, third one in
+    the king's camp, and the last in the cave.
 
 =head1 INTERFACE 
 
@@ -118,6 +124,29 @@ This document describes Don::Mendo version 0.0.1. The text from the
     interface. These normally consist of either subroutines that may be
     exported, or methods that may be called on objects belonging to the
     classes provided by the module.
+
+=head2 new( $text ) 
+
+Creates a new one, and sets up lines and bits and pieces inside
+
+    my $jornada = new Don::Mendo::Jornada( $text );
+
+=head2 text()
+
+Returns the raw text of the jornada
+
+=head2 lines_for_character( [ $actor ] )
+
+Returns the lines for a particular actor, or all of them if void
+
+
+=head2 tell 
+
+Follows narrative returning the whole text
+
+=head2 actors
+
+Returns a hash with the names of the actors and their first line
 
 =head1 DIAGNOSTICS
 
@@ -143,50 +172,20 @@ This document describes Don::Mendo version 0.0.1. The text from the
 
 
 =head1 CONFIGURATION AND ENVIRONMENT
-
-=for author to fill in:
-    A full explanation of any configuration system(s) used by the
-    module, including the names and locations of any configuration
-    files, and the meaning of any environment variables or properties
-    that can be set. These descriptions must also include details of any
-    configuration language used.
   
 Don::Mendo requires no configuration files or environment variables.
 
 
 =head1 DEPENDENCIES
 
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
 None.
 
-
 =head1 INCOMPATIBILITIES
-
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
 
 None reported.
 
 
 =head1 BUGS AND LIMITATIONS
-
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
 
 No bugs have been reported.
 
