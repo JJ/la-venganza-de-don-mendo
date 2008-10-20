@@ -6,16 +6,14 @@ use warnings;
 use lib qw( ../lib lib );
 
 use Don::Mendo;
-
 use POE;
 
 POE::Session->create(
-		     inline_states => {
-			 _start => \&a_escena,
-			 _stop => \&a_actuar,
+    inline_states => {
+	_start => \&a_escena,
+	_stop => \&a_actuar,
     },
     );
-
 
 sub a_escena {
     my ($kernel, $heap) = @_[KERNEL, HEAP];
@@ -30,5 +28,6 @@ sub a_actuar {
 	print $j->tell();
     }
 }
+
 POE::Kernel->run();
 
