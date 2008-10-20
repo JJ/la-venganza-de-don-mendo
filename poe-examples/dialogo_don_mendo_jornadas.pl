@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use lib qw( lib ../lib );
+
 use Don::Mendo;
 
 use POE;
@@ -14,7 +16,7 @@ for my $j (@$jornadas) {
 			  { _start => sub { my ($kernel,$heap) = @_[ KERNEL,HEAP];
 					    $heap->{'jornada'} = $j;
 					    $kernel->alias_set("jornada".$j_index++);
-					  },
+			    },
 			    actua => sub { my ($kernel,$heap, $session ) = @_[ KERNEL,HEAP,SESSION];
 					   print $heap->{'jornada'}->tell(); 
 					   my $alias = $kernel->alias_list( $session );

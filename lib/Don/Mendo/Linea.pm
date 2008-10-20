@@ -42,6 +42,15 @@ sub follows {
     $self->{'_follows'} = shift;
 }
 
+sub followed_by {
+  my $self = shift;
+  if ( $self->{'_follows'} ) {
+      return $self->{'_follows'}->character();
+  } else {
+      return;
+  }
+}
+
 1; # Magic true value required at end of module
 
 
@@ -62,89 +71,50 @@ This document describes Don::Mendo version 0.0.1. The text from the
   
 =head1 DESCRIPTION
 
-=for author to fill in:
-    Write a full description of the module and its features here.
-    Use subsections (=head2, =head3) as appropriate.
+A single bit in a play: who says the bit, and its (possibly formatted) content.
 
 
 =head1 INTERFACE 
 
-=for author to fill in:
-    Write a separate section listing the public components of the modules
-    interface. These normally consist of either subroutines that may be
-    exported, or methods that may be called on objects belonging to the
-    classes provided by the module.
+=head2 new( $character, $content)
 
-=head1 DIAGNOSTICS
+Creates the line; needs who said it and what
 
-=for author to fill in:
-    List every single error and warning message that the module can
-    generate (even the ones that will "never happen"), with a full
-    explanation of each problem, one or more likely causes, and any
-    suggested remedies.
+=head2 say()
 
-=over
+Returns the dialog fragment
 
-=item C<< Error message here, perhaps with %s placeholders >>
+=head2 character()
 
-[Description of error here]
+Returns the actor
 
-=item C<< Another error message here >>
+=head2 follows( $next_line )
 
-[Description of error here]
+Sets the line that follows this one.
 
-[Et cetera, et cetera]
+=head2 followed_by()
 
-=back
-
+Returns the name of the character that will issue the next line
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-=for author to fill in:
-    A full explanation of any configuration system(s) used by the
-    module, including the names and locations of any configuration
-    files, and the meaning of any environment variables or properties
-    that can be set. These descriptions must also include details of any
-    configuration language used.
-  
-Don::Mendo requires no configuration files or environment variables.
+None known. A bit of mastery and playfulness, I guess.
 
 
 =head1 DEPENDENCIES
 
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
-None.
+Caffeine and beer.
 
 
 =head1 INCOMPATIBILITIES
 
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
-
-None reported.
+Incompatible with serious people.
 
 
 =head1 BUGS AND LIMITATIONS
 
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
-
-No bugs have been reported.
+Limited to a single play... might be more general, but then it
+wouldn't be "The revenge of Don Mendo", but the revenge of somebody else.
 
 Please report any bugs or feature requests to
 C<bug-don-mendo@rt.cpan.org>, or through the web interface at

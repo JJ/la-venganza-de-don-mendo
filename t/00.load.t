@@ -1,4 +1,4 @@
-use Test::More tests => 8; # -*-CPerl-*-
+use Test::More tests => 9; # -*-CPerl-*-
 
 use lib qw( ../lib lib );
 
@@ -25,6 +25,11 @@ my $tercera_jornada = $don_mendo->jornadas()->[3];
 my @lines_for_mendo = @{$tercera_jornada->lines_for_character('MENDO')};
 like ($lines_for_mendo[$#lines_for_mendo]->say, qr/es don Mendo/, "Famous last words");
 isnt( $tercera_jornada->tell(), '', "Full text");
+
+#Check termination
+my $segunda_jornada = $don_mendo->jornadas()->[2];
+my @segunda_lines = @{$segunda_jornada->lines_for_character()};
+is( $segunda_lines[$#segunda_lines]->followed_by, NULL, "Last line");
 
 #Check actors
 my $actors = $tercera_jornada->actors();

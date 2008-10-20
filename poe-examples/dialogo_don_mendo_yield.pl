@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 
+use lib qw( lib ../lib );
+
 use Don::Mendo;
 
 use POE;
@@ -24,11 +26,11 @@ for my $a (keys %actores) {
 					  },
 			    actua => sub { my ($kernel,$heap, $session ) = @_[ KERNEL,HEAP,SESSION];
 					   my $this_line = shift @{$heap->{'all_lines'}};
-					   my $this_color = $colores[$heap->{'color'}];
-					   print "* ", colored( $this_line->character(), "bold $color"), 
-					     " : ", colored( $this_line->say(), $color), "\n--\n";
+					   my $this_color = $heap->{'color'};
+					   print "* ", colored( $this_line->character(), "bold $this_color"), 
+					     " : ", colored( $this_line->say(), $this_color), "\n--\n";
 					   $kernel->post( $this_line->followed_by(), "actua" );
-					   sleep(5);
+					   $kernel->delay( 5 );
 					 }
 			  } );
 

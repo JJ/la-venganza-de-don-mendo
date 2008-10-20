@@ -56,6 +56,11 @@ sub new {
 	
 }
 
+sub start {
+  my $self =shift;
+  return $self->{'_first_line'};
+}
+
 sub text {
     my $self = shift;
     return $self->{'text'};
@@ -64,7 +69,7 @@ sub text {
 sub lines_for_character {
     my $self = shift;
     my $character = uc( shift );
-    return $self->{'_lines'} if (!$character);
+    return $self->{'_lines'} if !$character;
     my @these_lines;
     for my $l (@{$self->{'_lines'}}) {
 	push(@these_lines, $l) if ($l->character() eq $character);
@@ -139,12 +144,11 @@ Returns the raw text of the jornada
 
 Returns the lines for a particular actor, or all of them if void
 
-
-=head2 tell 
+=head2 tell()
 
 Follows narrative returning the whole text
 
-=head2 actors
+=head2 actors()
 
 Returns a hash with the names of the actors and their first line
 
