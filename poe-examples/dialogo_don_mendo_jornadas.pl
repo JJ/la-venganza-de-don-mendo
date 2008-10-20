@@ -27,6 +27,6 @@ for my $j (@$jornadas) {
 
   }
 
-$poe_kernel->post("jornada1","actua");
+$poe_kernel->post("jornada0","actua");
 $poe_kernel->run();
 

@@ -45,7 +45,7 @@ for my $a (keys %actores) {
 			      }
 			    },
 
-			    actua => sub { my ($kernel,$heap, $session ) = @_[ KERNEL,HEAP,SESSION];
+			    actua => sub { my ($kernel,$heap ) = @_[ KERNEL,HEAP];
 					   my $this_line = shift @{$heap->{'all_lines'}};
 					   my $this_color = $heap->{'color'};
 					   print "* ", colored( $this_line->character(), "bold $this_color"), 

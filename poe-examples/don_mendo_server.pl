@@ -16,14 +16,13 @@ use lib qw( lib ../lib );
 use Don::Mendo;
 
 use POE qw( Wheel::ReadLine Filter::Grep );
-use Term::ANSIColor;
 
 my @jornadas = @{Don::Mendo->new()->jornadas()};
 my %actores;
 for my $j (@jornadas ) {
     %actores = ( %actores, %{$j->actors()});
 }
-my @actores_nombres = keys %actores;
+my @actores_nombres = sort keys %actores;
 
 POE::Component::Server::HTTP->new(
     Port           => 7500,
@@ -89,14 +88,14 @@ sub post_handler {
     # The rest of this handler displays the values encapsulated by the
     # object.
     $response->code(RC_OK);
-#    print Dumper( $q );
+    print Dumper( $q );
     my $personaje = $q->param('personaje');
     my $jornada = $q->param('jornada');
-#   print "$personaje, $jornada\n";
+    print "$personaje, $jornada\n";
     my $content = start_html(-head=>meta({-http_equiv => 'Content-Type',
 				-content    => 'text/html; charset=utf-8'}),
 			     "Diálogos de $personaje en la jornada $jornada ").
-	h1("Diálogos de $personaje en la jornada $jornada ");
+	h1("Diálogos de $personaje en la jornada $jornada");
     my $esta_jornada = $jornadas[$jornada];
     my $lines = $esta_jornada->lines_for_character( $personaje );
     $content .= start_ul();

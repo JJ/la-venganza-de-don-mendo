@@ -29,7 +29,7 @@ for my $a (keys %actores) {
 					  },
 			    espera => sub { 
 			      my ($heap) = @_[HEAP];
-			      $heap->{readline_wheel}->get("Dale a enter: ");			      
+			      $heap->{'readline_wheel'}->get("Dale a enter: ");			      
 			    }, 
 
 			    actua => sub { my ($kernel,$heap, $session, $line ) = @_[ KERNEL,HEAP,SESSION,ARG0];
