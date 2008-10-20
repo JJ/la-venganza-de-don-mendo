@@ -56,6 +56,11 @@ sub new {
 	
 }
 
+sub start {
+  my $self =shift;
+  return $self->{'_first_line'};
+}
+
 sub text {
     my $self = shift;
     return $self->{'text'};
