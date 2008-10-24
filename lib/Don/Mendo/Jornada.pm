@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp;
 
-our $VERSION = "0.0.3";
+our $VERSION = "0.0.4";
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
@@ -124,17 +124,15 @@ A "jornada" is the equivalent of an act, a part of the play taking
 
 =head1 INTERFACE 
 
-=for author to fill in:
-    Write a separate section listing the public components of the modules
-    interface. These normally consist of either subroutines that may be
-    exported, or methods that may be called on objects belonging to the
-    classes provided by the module.
-
 =head2 new( $text ) 
 
 Creates a new one, and sets up lines and bits and pieces inside
 
     my $jornada = new Don::Mendo::Jornada( $text );
+
+=head2 start()
+
+Returns the first character line (C<Don::Mendo::Line>)
 
 =head2 text()
 
@@ -151,28 +149,6 @@ Follows narrative returning the whole text
 =head2 actors()
 
 Returns a hash with the names of the actors and their first line
-
-=head1 DIAGNOSTICS
-
-=for author to fill in:
-    List every single error and warning message that the module can
-    generate (even the ones that will "never happen"), with a full
-    explanation of each problem, one or more likely causes, and any
-    suggested remedies.
-
-=over
-
-=item C<< Error message here, perhaps with %s placeholders >>
-
-[Description of error here]
-
-=item C<< Another error message here >>
-
-[Description of error here]
-
-[Et cetera, et cetera]
-
-=back
 
 
 =head1 CONFIGURATION AND ENVIRONMENT

@@ -30,7 +30,7 @@ for my $a (keys %actores) {
 					   print "* ", colored( $this_line->character(), "bold $this_color"), 
 					     " : ", colored( $this_line->say(), $this_color), "\n--\n";
 					   $kernel->post( $this_line->followed_by(), "actua" );
-					   $kernel->delay( 5 );
+					   $kernel->delay( 5000 );
 					 }
 			  } );
 

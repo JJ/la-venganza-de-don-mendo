@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp;
 
-our $VERSION = "0.0.5";
+our $VERSION = "0.0.7";
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
@@ -4452,7 +4452,7 @@ ceremoniosamente. Vase.)
         MENDO.– Guárdeos Dios, pulida dama.
 
 
-        MAGDAENA.– Y a vos, flor de la poesía,
+        MAGDALENA.– Y a vos, flor de la poesía,
 que venís por dicha mía
 adonde mi amor os llama.
 

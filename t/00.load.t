@@ -1,4 +1,4 @@
-use Test::More tests => 9; # -*-CPerl-*-
+use Test::More tests => 10; # -*-CPerl-*-
 
 use lib qw( ../lib lib );
 
@@ -29,7 +29,7 @@ isnt( $tercera_jornada->tell(), '', "Full text");
 #Check termination
 my $segunda_jornada = $don_mendo->jornadas()->[2];
 my @segunda_lines = @{$segunda_jornada->lines_for_character()};
-is( $segunda_lines[$#segunda_lines]->followed_by, NULL, "Last line");
+is( $segunda_lines[$#segunda_lines]->followed_by, undef, "Last line");
 
 #Check actors
 my $actors = $tercera_jornada->actors();

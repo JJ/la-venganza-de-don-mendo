@@ -28,7 +28,7 @@ for my $a (keys %actores) {
 					      POE::Wheel::ReadLine->new( InputEvent => 'actua' );
 					  },
 			    espera => sub { 
-			      my ($heap) = @_[HEAP];
+			      my ($heap) = $_[HEAP];
 			      $heap->{'readline_wheel'}->get("Dale a enter: ");			      
 			    }, 
 
