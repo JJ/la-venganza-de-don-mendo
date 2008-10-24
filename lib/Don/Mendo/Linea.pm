@@ -44,7 +44,11 @@ sub follows {
 
 sub followed_by {
   my $self = shift;
-  return $self->{'_follows'}->character();
+  if ( $self->{'_follows'} ) {
+      return $self->{'_follows'}->character();
+  } else {
+      return;
+  }
 }
 
 1; # Magic true value required at end of module

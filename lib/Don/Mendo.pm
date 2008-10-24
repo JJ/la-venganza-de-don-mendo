@@ -4,7 +4,7 @@ use warnings;
 use strict;
 use Carp;
 
-our $VERSION = "0.0.3";
+our $VERSION = "0.0.5";
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
@@ -65,7 +65,7 @@ This document describes Don::Mendo version 0.0.3.
   
 =head1 DESCRIPTION
 
-A structured module for "La venganza de Don Mendo", by Antonio Muñoz
+A structured module for "La venganza de Don Mendo", by D. Pedro Muñoz
     Seca, a play written in 1918 and widely known and represented in
     Spain. The text was converted from a PDF found in
     L<www.juntadeandalucia.es/averroes/~04700442a/Mendo.pdf|Averroes
