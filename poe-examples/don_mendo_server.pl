@@ -15,8 +15,6 @@ use Data::Dumper;
 use lib qw( lib ../lib );
 use Don::Mendo;
 
-use POE qw( Wheel::ReadLine Filter::Grep );
-
 my @jornadas = @{Don::Mendo->new()->jornadas()};
 my %actores;
 for my $j (@jornadas ) {
@@ -88,7 +86,7 @@ sub post_handler {
     # The rest of this handler displays the values encapsulated by the
     # object.
     $response->code(RC_OK);
-    print Dumper( $q );
+ #   print Dumper( $q );
     my $personaje = $q->param('personaje');
     my $jornada = $q->param('jornada');
     print "$personaje, $jornada\n";

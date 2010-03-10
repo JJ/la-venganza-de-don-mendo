@@ -56,17 +56,23 @@ sub followed_by {
 
 =head1 NAME
 
-Don::Mendo - [One line description of module's purpose here]
+Don::Mendo::Linea - A single bit of a dialogue in a play
 
 =head1 VERSION
 
-This document describes Don::Mendo version 0.0.1. The text from the
-    original play was downloaded from the L<www.juntadeandalucia.es/averroes/~04700442a/Mendo.pdf|Averroes Plan>. 
+This document describes Don::Mendo::Linea version 0.0.3.
 
 
 =head1 SYNOPSIS
 
     use Don::Mendo;
+    use Don::Mendo::Linea;
+
+    my $don_mendo = new Don::Mendo;
+    my $primera_jornada = $don_mendo->jornadas()->[0];
+    my $lines = $primera_jornada->lines_for_character();
+    my $first_line = $lines->[0];
+    print $first_line->character(), " ", $first_line->say(), 
 
   
 =head1 DESCRIPTION

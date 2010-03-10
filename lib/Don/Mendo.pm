@@ -4456,7 +4456,7 @@ ceremoniosamente. Vase.)
         MENDO.– Guárdeos Dios, pulida dama.
 
 
-        MAGDAENA.– Y a vos, flor de la poesía,
+        MAGDALENA.– Y a vos, flor de la poesía,
 que venís por dicha mía
 adonde mi amor os llama.
 
