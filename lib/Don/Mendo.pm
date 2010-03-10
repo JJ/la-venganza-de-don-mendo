@@ -1,10 +1,12 @@
+use lib qw( ../../lib ); # for syntax checking
+
 package Don::Mendo;
 
 use warnings;
 use strict;
 use Carp;
 
-our $VERSION = "0.0.5";
+our $VERSION = "0.0.7";
 
 # Other recommended modules (uncomment to use):
 #  use IO::Prompt;
@@ -45,7 +47,9 @@ sub jornadas {
 1; # Magic true value required at end of module
 
 
+=encoding utf8
 =head1 NAME
+
 
 Don::Mendo - Modules for "La venganza de Don Mendo", Sir Mendo's revenge.
 
@@ -57,7 +61,7 @@ This document describes Don::Mendo version 0.0.3.
 
     use Don::Mendo;
     my $don_mendo = new Don::Mendo;
-    my $first_act = $don_mendo->jornadas(0); #Acts in the play are
+    my $first_act = $don_mendo->jornadas->[0]; #Acts in the play are
 				#"jornadas"
     $first_act->tell(); #Print the whole act
     my $lines_for_mendo = $first_act->lines_for_character('Mendo');
@@ -87,7 +91,7 @@ Returns the whole text, in the original version
 
 =head2 jornadas()
 
-Returns the array with the 4 journeys that constitute the play
+Returns an arrayref with the 4 journeys that constitute the play
 
 =head1 DEPENDENCIES
 
@@ -5104,7 +5108,7 @@ hará la Parca un milagro. (Revolviéndose y trazando en el aire con su puñal l
 
 
                                                            94
-     NUÑO y PERO.– (Como antes.) ¡¡No!! (Vuelven a tumbarse. Todos retroceden horrorizados.)
+     NUÑO y PERO.– (Como antes.) ¡¡No!! (Vuelven a tumbarse. Todos retroceden horrorizados.)
 
 
      AZOFAIFA.– (Clavando su puñal en el pecho de Magdalena.) ¡Baldón de mujeres, muere!
@@ -5251,4 +5255,4 @@ y don Mendo... mató a menda. (Muere.) (Telón)
 
 
                                                          97
-
+
