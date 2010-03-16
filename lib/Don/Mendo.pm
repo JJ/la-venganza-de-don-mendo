@@ -1,4 +1,4 @@
-use lib qw( ../../lib ); # for syntax checking
+use lib qw( ../../lib ); # for syntax checking -*-CPerl-*-
 
 package Don::Mendo;
 
@@ -48,6 +48,7 @@ sub jornadas {
 
 
 =encoding utf8
+
 =head1 NAME
 
 
@@ -113,7 +114,12 @@ Please report any bugs or feature requests to
 C<bug-don-mendo@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
+=head1 Acknowledgements
 
+	The author is grateful to the Madrid Perl Mongers, for having a
+	look at the code and using it in their talks, specially Diego
+	Kuperman and Joaquin Ferrero. 
+	
 =head1 AUTHOR
 
 JJ Merelo  C<< <jj@merelo.net> >>
