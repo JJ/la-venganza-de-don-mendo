@@ -8,12 +8,6 @@ use Carp;
 
 our $VERSION = "0.0.7";
 
-# Other recommended modules (uncomment to use):
-#  use IO::Prompt;
-#  use Perl6::Export;
-#  use Perl6::Slurp;
-#  use Perl6::Say;
-
 use Don::Mendo::Jornada;
 
 # Module implementation here
@@ -31,7 +25,6 @@ sub new {
 	push  @{$self->{'_jornadas'}}, $esta_jornada;
     }
     return $self;
-	
 }
 
 sub text {
